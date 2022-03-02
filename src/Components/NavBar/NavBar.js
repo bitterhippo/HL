@@ -3,17 +3,15 @@ import { Link } from 'react-dom';
 
 //Subcomponets
 import Colors from '../Colors';
+import HighlightLink from './HighlightLink';
 
 const NavBar = () => {
+
   return (
     <div style={styles.navBarMainWrapper}>
       <div style={styles.navBarListWrapper}>
-        <div>
-          TEST
-        </div>
-        <div>
-          THIS
-        </div>
+        <HighlightLink name="Test" />
+        <HighlightLink name="This" />
       </div>
     </div>
   )
@@ -21,12 +19,16 @@ const NavBar = () => {
 
 const styles = {
   navBarMainWrapper: {
-    backgroundColor: Colors.Secondary
+    backgroundColor: Colors.Primary,
+    padding: 15
   },
   navBarListWrapper: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 20
+    gap: 30,
+    marginLeft: 20,
+    color: Colors.Secondary,
+    fontWeight: 'bold'
   }
 };
 
