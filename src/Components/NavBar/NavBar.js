@@ -10,8 +10,11 @@ const NavBar = () => {
   return (
     <div style={styles.navBarMainWrapper}>
       <div style={styles.navBarListWrapper}>
-        <HighlightLink name="Find Characters" to="FindCharacters"/>
-        <HighlightLink name="New Characters" to="NewCharacters"/>
+        <HighlightLink name="Find Characters" to="FindCharacters" />
+        <HighlightLink name="New Characters" to="NewCharacters" />
+      </div>
+      <div style={{marginRight: '5vw'}}>
+        <HighlightLink name="Documentation" to="/" />
       </div>
     </div>
   )
@@ -21,15 +24,16 @@ const styles = {
   navBarMainWrapper: {
     backgroundColor: Colors.Primary,
     padding: 15,
-    borderBottom: `2px solid ${Colors.Secondary}`
+    borderBottom: `2px solid ${Colors.Secondary}`,
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   navBarListWrapper: {
     display: 'flex',
     flexDirection: 'row',
     gap: 30,
-    marginLeft: 20,
     color: Colors.Secondary,
-    fontWeight: 'bold'
+    marginLeft: '5vw'
   }
 };
 

@@ -17,11 +17,12 @@ const HighlightLink = ({ name, to }) => {
         ...(hover ? styles.selected : null)
       }}
     >
-      <Link 
-      to={to}
-      style={styles.styledLink}
+      <Link
+        to={to}
+        style={styles.styledLink}
       >
-        {name}</Link>
+        {name}
+      </Link>
     </div>
   )
 };
@@ -35,7 +36,8 @@ const styles = {
   },
   styledLink: {
     textDecoration: 'none',
-    color: `${Colors.Secondary}`
+    color: `${Colors.Secondary}`,
+    fontWeight: 'bold'
   }
 };
 
