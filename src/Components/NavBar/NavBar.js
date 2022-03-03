@@ -20,7 +20,8 @@ const NavBar = () => {
 const styles = {
   navBarMainWrapper: {
     backgroundColor: Colors.Primary,
-    padding: 15
+    padding: 15,
+    borderBottom: `2px solid ${Colors.Secondary}`
   },
   navBarListWrapper: {
     display: 'flex',
