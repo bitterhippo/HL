@@ -3,13 +3,15 @@ import React from 'react';
 //Subcomponents
 import NavBar from '../Components/NavBar/NavBar';
 import API from '../Components/API/API';
+import MainContent from '../Components/PPC/MainContent';
 
 const Landing = () => {
   return (
     <>
     <NavBar />
-    LOL
-    { API.getOne()}
+    <MainContent>
+      LOL
+    </MainContent>
     </>
   )
 };
