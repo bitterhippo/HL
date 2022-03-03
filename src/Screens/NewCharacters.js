@@ -3,7 +3,7 @@ import React from 'react';
 const NewCharacters = () => {
   return (
     <>
-    Find Characters
+    New Characters
     </>
   )
 };

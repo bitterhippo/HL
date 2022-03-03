@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 //Subcomponents
 import Colors from '../Colors';
@@ -17,7 +17,11 @@ const HighlightLink = ({ name, to }) => {
         ...(hover ? styles.selected : null)
       }}
     >
-      {name}
+      <Link 
+      to={to}
+      style={styles.styledLink}
+      >
+        {name}</Link>
     </div>
   )
 };
@@ -28,6 +32,10 @@ const styles = {
   },
   selected: {
     textDecoration: 'underline',
+  },
+  styledLink: {
+    textDecoration: 'none',
+    color: `${Colors.Secondary}`
   }
 };
 

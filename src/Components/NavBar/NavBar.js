@@ -10,8 +10,8 @@ const NavBar = () => {
   return (
     <div style={styles.navBarMainWrapper}>
       <div style={styles.navBarListWrapper}>
-        <HighlightLink name="Test" />
-        <HighlightLink name="This" />
+        <HighlightLink name="Find Characters" to="FindCharacters"/>
+        <HighlightLink name="New Characters" to="NewCharacters"/>
       </div>
     </div>
   )
