@@ -1,6 +1,8 @@
 const API = {
   getOne: function (state) {
 
+    state([])
+
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
@@ -13,6 +15,8 @@ const API = {
       .catch(err => console.log('Error', err))
   },
   getTen: function (state) {
+
+    state([])
 
     var requestOptions = {
       method: 'GET',

@@ -10,6 +10,12 @@ const FindCharacters = () => {
 
   const [searchedCharacters, setSearchedCharacters] = useState([]);
 
+  //Utilities
+
+  const deleteOne = target => {
+    setSearchedCharacters(previousState => [...previousState.filter(cv => cv.name !== target)])
+  }
+
   return (
     <MainContent>
       <h1>Looking for a character?</h1>
@@ -30,7 +36,10 @@ const FindCharacters = () => {
       <div style={styles.charactersList}>
         {searchedCharacters.length < 1 && <h3>Press the "Get One" or "Get Ten" buttons above to access the biographic data of random characters from the Star Wars universe.</h3>}
         {searchedCharacters.length > 0 && <h3>The Star Wars API returned results with the follow characters. Expand their profiles to check their biographic data!</h3>}
-        {searchedCharacters && <NamePlateList arrayData={searchedCharacters} />}
+        {searchedCharacters && <NamePlateList 
+        deleteOne={deleteOne}
+        arrayData={searchedCharacters} 
+        />}
       </div>
     </MainContent>
   )

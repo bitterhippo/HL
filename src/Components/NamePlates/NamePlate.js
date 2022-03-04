@@ -13,7 +13,7 @@ const openDrawer = (birth_year, eye_color, gender, height, mass) =>
     <span>Mass: {mass} </span>
   </>
 
-const NamePlate = ({ data }) => {
+const NamePlate = ({ data , deleteOne}) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,11 +24,19 @@ const NamePlate = ({ data }) => {
     <div style={styles.namePlateWrapper}>
       <div style={styles.namePlateHeader}>
         <span> {name} </span>
-        <div 
-        style={styles.namePlateToggle}
-        onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <IoCaretUpOutline size={18} /> : <IoCaretDownOutline size={18} />}
-          <IoCloseCircle size={18}/>
+        <div
+          style={styles.namePlateToggle}>
+          <div
+            style={styles.namePlateToggleItem}
+            onClick={() => setIsOpen(!isOpen)}
+          >{isOpen ? <IoCaretUpOutline size={18} /> : <IoCaretDownOutline size={18} />}
+          </div>
+          <div
+            style={styles.namePlateToggleItem}
+            onClick={() => deleteOne(name)}
+          >
+            <IoCloseCircle size={18} />
+          </div>
         </div>
       </div>
       {isOpen && openDrawer(birth_year, eye_color, gender, height, mass)}
@@ -54,9 +62,11 @@ const styles = {
     fontWeight: 'bold',
   },
   namePlateToggle: {
-    cursor: 'pointer',
     display: 'flex',
     gap: 20
+  },
+  namePlateToggleItem: {
+    cursor: 'pointer',
   }
 };
 
