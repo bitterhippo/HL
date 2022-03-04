@@ -17,8 +17,6 @@ const NamePlate = ({ data }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(data);
-
   const { name, birth_year, eye_color, gender, height, mass } = data;
 
   return (

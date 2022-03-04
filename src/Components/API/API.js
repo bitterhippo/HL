@@ -8,7 +8,8 @@ const API = {
 
     fetch(`https://swapi.dev/api/people/${this.getRN()}/`, requestOptions)
       .then(response => response.text())
-      .then(result => state(JSON.parse(result)))
+      .then(result => JSON.parse(result))
+      .then(result => state(previousState => [...previousState, result]))
       .catch(err => console.log('Error', err))
   },
   getTen: function (state) {

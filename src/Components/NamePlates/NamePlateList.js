@@ -6,8 +6,6 @@ import NamePlate from './NamePlate';
 
 const NamePlateList = ({ arrayData }) => {
 
-  console.log('%c NamePlateList', 'color: red')
-
   return (
     <div style={styles.namePlateListWrappper}>
       {
