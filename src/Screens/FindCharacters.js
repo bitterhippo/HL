@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //Subcomponents
 import MainContent from '../Components/PPC/MainContent';
 import StyledButton from '../Components/StyledButton/StyledButton';
 import API from '../Components/API/API';
-import NamePlate from '../Components/NamePlates/NamePlate';
+import NamePlateList from '../Components/NamePlates/NamePlateList';
 
 const FindCharacters = () => {
 
-  const [searchedCharacters, setSearchedCharacters] = useState();
+  const [searchedCharacters, setSearchedCharacters] = useState([]);
 
-  console.log(searchedCharacters);
+  console.log('%c Searched Character Test Log', 'color: orange')
+  console.log(searchedCharacters)
 
   return (
     <MainContent>
@@ -29,7 +30,7 @@ const FindCharacters = () => {
         />
       </div>
       <div style={styles.charactersList}>
-        {searchedCharacters && <NamePlate data={searchedCharacters} />}
+        {searchedCharacters && <NamePlateList arrayData={searchedCharacters} />}
       </div>
     </MainContent>
   )

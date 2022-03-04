@@ -20,19 +20,17 @@ const API = {
 
     let queryValues = [];
 
-    while (queryValues.length <= 10) {
+    while (queryValues.length < 10) {
       let newRN = this.getRN()
       queryValues.includes(newRN) ? null : queryValues.push(newRN);
     }
 
-    let queryResults = [];
-
     queryValues.forEach(cv => fetch(`https://swapi.dev/api/people/${cv}/`, requestOptions)
       .then(response => response.text())
-      .then(result => queryResults.push(JSON.parse(result)))
+      .then(result => JSON.parse(result))
+      .then(result => state(previousState => [...previousState, result]))
       .catch(err => console.log('Error', err)))
 
-    console.log(queryResults);
   },
   getRN: function () {
     return Math.floor(Math.random() * (83 - 1) + 1)

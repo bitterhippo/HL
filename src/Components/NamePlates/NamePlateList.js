@@ -5,17 +5,27 @@ import React from 'react';
 import NamePlate from './NamePlate';
 
 const NamePlateList = ({ arrayData }) => {
+
+  console.log('%c NamePlateList', 'color: red')
+
   return (
-    <div>
+    <div style={styles.namePlateListWrappper}>
       {
-        arrayData.map(currentItem => <NamePlate name={currentItem.name} />)
+        arrayData.map(currentItem => <NamePlate 
+          data={currentItem} 
+          key={currentItem.name}
+          />)
       }
     </div>
   )
 };
 
 const styles = {
-
+  namePlateListWrappper: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 20
+  }
 };
 
 export default NamePlateList;
