@@ -29,7 +29,7 @@ const FindCharacters = () => {
         />
       </div>
       <div style={styles.charactersList}>
-        {searchedCharacters && <NamePlate name={searchedCharacters.name} />}
+        {searchedCharacters && <NamePlate data={searchedCharacters} />}
       </div>
     </MainContent>
   )
