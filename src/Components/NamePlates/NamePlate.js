@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //Subcomponents
 import Colors from '../Colors';
-import { IoCaretDownOutline, IoCaretUpOutline } from 'react-icons/io5';
+import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle } from 'react-icons/io5';
 
 const openDrawer = (birth_year, eye_color, gender, height, mass) =>
   <>
