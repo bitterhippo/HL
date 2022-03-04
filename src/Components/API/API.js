@@ -6,9 +6,7 @@ const API = {
       redirect: 'follow'
     }
 
-    const query = Math.floor(Math.random() * (83 - 1) + 1);
-
-    fetch(`https://swapi.dev/api/people/${query}/`, requestOptions)
+    fetch(`https://swapi.dev/api/people/${this.getRN()}/`, requestOptions)
       .then(response => response.text())
       .then(result => state(JSON.parse(result)))
       .catch(err => console.log('Error', err))
@@ -20,10 +18,24 @@ const API = {
       redirect: 'follow'
     }
 
-    fetch('https://swapi.dev/api/people/1/', requestOptions)
+    let queryValues = [];
+
+    while (queryValues.length <= 10) {
+      let newRN = this.getRN()
+      queryValues.includes(newRN) ? null : queryValues.push(newRN);
+    }
+
+    let queryResults = [];
+
+    queryValues.forEach(cv => fetch(`https://swapi.dev/api/people/${cv}/`, requestOptions)
       .then(response => response.text())
-      .then(result => JSON.parse(result))
-      .catch(err => console.log('Error', err))
+      .then(result => queryResults.push(JSON.parse(result)))
+      .catch(err => console.log('Error', err)))
+
+    console.log(queryResults);
+  },
+  getRN: function () {
+    return Math.floor(Math.random() * (83 - 1) + 1)
   }
 }
 

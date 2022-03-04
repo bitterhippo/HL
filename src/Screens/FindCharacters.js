@@ -25,7 +25,7 @@ const FindCharacters = () => {
         />
         <StyledButton
           title="Get Ten"
-          clickHandler={() => API.getOne(setSearchedCharacters)}
+          clickHandler={() => API.getTen(setSearchedCharacters)}
         />
       </div>
       <div style={styles.charactersList}>

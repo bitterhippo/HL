@@ -7,9 +7,9 @@ import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle } from 'react-icons
 const openDrawer = (birth_year, eye_color, gender, height, mass) =>
   <>
     <span>Birth Year: {birth_year} </span>
-    <span>Eye Color: {eye_color} </span>
     <span>Gender: {gender} </span>
-    <span>Height: {height} </span>
+    <span>Eye Color: {eye_color} </span>
+    <span>Height: {height}cm </span>
     <span>Mass: {mass} </span>
   </>
 
@@ -24,9 +24,12 @@ const NamePlate = ({ data }) => {
     <div style={styles.namePlateWrapper}>
       <div style={styles.namePlateHeader}>
         <span> {name} </span>
-        <span onClick={() => setIsOpen(!isOpen)}>
+        <div 
+        style={styles.namePlateToggle}
+        onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <IoCaretUpOutline size={18} /> : <IoCaretDownOutline size={18} />}
-        </span>
+          <IoCloseCircle size={18}/>
+        </div>
       </div>
       {isOpen && openDrawer(birth_year, eye_color, gender, height, mass)}
     </div>
@@ -42,13 +45,19 @@ const styles = {
     fontSize: 16,
     display: 'flex',
     flexDirection: 'column',
-    gap: 5
+    gap: 5,
+    border: `1px solid ${Colors.Secondary}`
   },
   namePlateHeader: {
     display: 'flex',
     justifyContent: 'space-between',
     fontWeight: 'bold',
   },
+  namePlateToggle: {
+    cursor: 'pointer',
+    display: 'flex',
+    gap: 20
+  }
 };
 
 export default NamePlate
