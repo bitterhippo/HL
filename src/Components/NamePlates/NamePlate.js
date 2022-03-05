@@ -4,11 +4,33 @@ import React, { useState } from 'react';
 import Colors from '../Colors';
 import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle, IoJournalSharp } from 'react-icons/io5';
 
-//Open drawer render function
 
 const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedAttribute, setSelectedAttribute] = useState();
+  const attributeDefaults = [
+    {
+      name: 'birth_year',
+      makeString: value => `Birth Year: ${value}`
+    },
+    {
+      name: 'gender',
+      makeString: value => `Gender: ${value}`
+    },
+    {
+      name: 'eye_color',
+      makeString: value => `Eye Color: ${value}`
+    },
+    {
+      name: 'height',
+      makeString: value => `Height: ${value} cm`
+    },
+    {
+      name: 'mass',
+      makeString: value => `Mass: ${value} kg`
+    }
+  ]
 
   const { name, birth_year, eye_color, gender, height, mass } = data;
 
@@ -26,13 +48,16 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
           <div
             style={styles.namePlateToggleItem}
             onClick={() => setIsOpen(!isOpen)}
-          >{isOpen ? <IoCaretUpOutline size={18} /> : <IoCaretDownOutline size={18} />}
+          >{
+              isOpen
+                ? <IoCaretUpOutline size={18} />
+                : <IoCaretDownOutline size={18} />
+            }
           </div>
           <div
             style={styles.namePlateToggleItem}
             onClick={() => deleteOne(name)}
           >
-            <IoJournalSharp size={18} />
             <IoCloseCircle size={18} />
           </div>
         </div>
@@ -41,11 +66,15 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
       {
         isOpen &&
         <>
-          <span>Birth Year: {birth_year}</span>
-          <span>Gender: {gender} </span>
-          <span>Eye Color: {eye_color} </span>
-          <span>Height: {height} cm </span>
-          <span>Mass: {mass} kg </span>
+          {
+          attributeDefaults.map(cv => <div
+            key={data.name + cv.name}
+            onClick={() => setSelectedAttribute(cv.name)}
+          >
+            {cv.makeString(data[cv.name])}
+            {selectedAttribute === cv.name && <>test</>}
+          </div>)
+          }
         </>
       }
     </div>
