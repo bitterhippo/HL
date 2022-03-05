@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 
 //Subcomponents
 import Colors from '../Colors';
-import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle, IoJournalSharp } from 'react-icons/io5';
+import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle, IoCheckmarkSharp, IoCloseOutline } from 'react-icons/io5';
 
 
 const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAttribute, setSelectedAttribute] = useState();
+
+  console.log(selectedAttribute)
+
+  //Defaults values for formating the tray
+
   const attributeDefaults = [
     {
       name: 'birth_year',
@@ -67,13 +72,22 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
         isOpen &&
         <>
           {
-          attributeDefaults.map(cv => <div
-            key={data.name + cv.name}
-            onClick={() => setSelectedAttribute(cv.name)}
-          >
-            {cv.makeString(data[cv.name])}
-            {selectedAttribute === cv.name && <>test</>}
-          </div>)
+            attributeDefaults.map(cv => <div
+              style={styles.attributeRow}
+              key={data.name + cv.name}
+              onClick={selectedAttribute ? null : () => setSelectedAttribute(cv.name)}
+            >
+              {cv.makeString(data[cv.name])}
+              {selectedAttribute === cv.name &&
+                <div style={styles.attributeRow}>
+                  <IoCheckmarkSharp size={20} />
+                  <input></input>
+                  <div onClick={() => setSelectedAttribute()}>
+                    <IoCloseOutline size={20} />
+                  </div>
+                </div>
+              }
+            </div>)
           }
         </>
       }
@@ -105,6 +119,10 @@ const styles = {
   namePlateToggleItem: {
     cursor: 'pointer',
   },
+  attributeRow: {
+    display: 'flex',
+    flexDirection: 'row'
+  }
 };
 
 export default NamePlate
