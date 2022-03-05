@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //Subcomponents
 import Colors from '../Colors';
-import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle } from 'react-icons/io5';
+import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle, IoJournalSharp } from 'react-icons/io5';
 
 //Open drawer render function
 
@@ -32,17 +32,22 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
             style={styles.namePlateToggleItem}
             onClick={() => deleteOne(name)}
           >
+            <IoJournalSharp size={18} />
             <IoCloseCircle size={18} />
           </div>
         </div>
       </div>
-      {isOpen && <>
-        <span>Birth Year: {birth_year}</span>
-        <span>Gender: {gender} </span>
-        <span>Eye Color: {eye_color} </span>
-        <span>Height: {height} cm </span>
-        <span>Mass: {mass} kg </span>
-      </>}
+      {/* Opened Drawer */}
+      {
+        isOpen &&
+        <>
+          <span>Birth Year: {birth_year}</span>
+          <span>Gender: {gender} </span>
+          <span>Eye Color: {eye_color} </span>
+          <span>Height: {height} cm </span>
+          <span>Mass: {mass} kg </span>
+        </>
+      }
     </div>
   )
 };
