@@ -4,16 +4,18 @@ import React, { useState } from 'react';
 import Colors from '../Colors';
 import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle } from 'react-icons/io5';
 
+//Open drawer render function
+
 const openDrawer = (birth_year, eye_color, gender, height, mass) =>
   <>
-    <span>Birth Year: {birth_year} </span>
+    <span>Birth Year: {birth_year}</span>
     <span>Gender: {gender} </span>
     <span>Eye Color: {eye_color} </span>
-    <span>Height: {height}cm </span>
-    <span>Mass: {mass} </span>
+    <span>Height: {height} cm </span>
+    <span>Mass: {mass} kg </span>
   </>
 
-const NamePlate = ({ data , deleteOne}) => {
+const NamePlate = ({ data, deleteOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -67,7 +69,7 @@ const styles = {
   },
   namePlateToggleItem: {
     cursor: 'pointer',
-  }
+  },
 };
 
 export default NamePlate

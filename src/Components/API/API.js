@@ -38,7 +38,7 @@ const API = {
 
   },
   getRN: function () {
-    return Math.floor(Math.random() * (83 - 1) + 1)
+    return Math.floor(Math.random() * (82 - 0) + 1)
   }
 }
 
