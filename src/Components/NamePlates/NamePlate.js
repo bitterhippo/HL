@@ -9,6 +9,7 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAttribute, setSelectedAttribute] = useState();
+  const [textInput, setInput] = useState('5');
 
   console.log(selectedAttribute)
 
@@ -16,23 +17,23 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const attributeDefaults = [
     {
-      name: 'birth_year',
+      attribute: 'birth_year',
       makeString: value => `Birth Year: ${value}`
     },
     {
-      name: 'gender',
+      attribute: 'gender',
       makeString: value => `Gender: ${value}`
     },
     {
-      name: 'eye_color',
+      attribute: 'eye_color',
       makeString: value => `Eye Color: ${value}`
     },
     {
-      name: 'height',
+      attribute: 'height',
       makeString: value => `Height: ${value} cm`
     },
     {
-      name: 'mass',
+      attribute: 'mass',
       makeString: value => `Mass: ${value} kg`
     }
   ]
@@ -70,18 +71,20 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
       {/* Opened Drawer */}
       {
         isOpen &&
-        <>
+        <div style={styles.drawer}>
           {
             attributeDefaults.map(cv => <div
-              style={styles.attributeRow}
-              key={data.name + cv.name}
-              onClick={selectedAttribute ? null : () => setSelectedAttribute(cv.name)}
+              style={{...styles.attributeRow, justifyContent:'space-between'}}
+              key={data.name + cv.attribute}
+              onClick={selectedAttribute ? null : () => setSelectedAttribute(cv.attribute)}
             >
-              {cv.makeString(data[cv.name])}
-              {selectedAttribute === cv.name &&
+              <span>{cv.makeString(data[cv.attribute])}</span>
+              {selectedAttribute === cv.attribute &&
                 <div style={styles.attributeRow}>
-                  <IoCheckmarkSharp size={20} />
-                  <input></input>
+                  <div onClick={() => updateOne(name, cv.attribute, textInput)}>
+                    <IoCheckmarkSharp size={20} />
+                  </div>
+                  <input style={styles.styledInput} />
                   <div onClick={() => setSelectedAttribute()}>
                     <IoCloseOutline size={20} />
                   </div>
@@ -89,7 +92,7 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
               }
             </div>)
           }
-        </>
+        </div>
       }
     </div>
   )
@@ -104,7 +107,6 @@ const styles = {
     fontSize: 16,
     display: 'flex',
     flexDirection: 'column',
-    gap: 5,
     border: `1px solid ${Colors.Secondary}`
   },
   namePlateHeader: {
@@ -122,6 +124,12 @@ const styles = {
   attributeRow: {
     display: 'flex',
     flexDirection: 'row'
+  },
+  styledInput: {
+    height: '12px'
+  },
+  drawer: {
+    marginTop: 20
   }
 };
 
