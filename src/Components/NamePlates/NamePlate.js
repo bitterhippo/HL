@@ -9,9 +9,15 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAttribute, setSelectedAttribute] = useState();
-  const [textInput, setInput] = useState('5');
+  const [textInput, setInput] = useState('');
 
   console.log(selectedAttribute)
+
+  //Utilites
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
 
   //Defaults values for formating the tray
 
@@ -38,10 +44,7 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
     }
   ]
 
-  const { name, birth_year, eye_color, gender, height, mass } = data;
-
-  // Demo for the innvocation of the updateOne button.
-  // onClick={() => updateOne(name, 'height', 'lol')
+  const { name } = data;
 
   return (
 
@@ -74,18 +77,31 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
         <div style={styles.drawer}>
           {
             attributeDefaults.map(cv => <div
-              style={{...styles.attributeRow, justifyContent:'space-between'}}
+              style={{ ...styles.attributeRow, justifyContent: 'space-between' }}
               key={data.name + cv.attribute}
-              onClick={selectedAttribute ? null : () => setSelectedAttribute(cv.attribute)}
+              onClick={selectedAttribute ? null : () =>
+                setSelectedAttribute(cv.attribute)
+              }
             >
               <span>{cv.makeString(data[cv.attribute])}</span>
               {selectedAttribute === cv.attribute &&
                 <div style={styles.attributeRow}>
-                  <div onClick={() => updateOne(name, cv.attribute, textInput)}>
+                  <div
+                    onClick={() => {
+                      updateOne(name, cv.attribute, textInput)
+                      setSelectedAttribute()
+                    }}
+                  >
                     <IoCheckmarkSharp size={20} />
                   </div>
-                  <input style={styles.styledInput} />
-                  <div onClick={() => setSelectedAttribute()}>
+                  <input 
+                  onChange={(e) => handleChange(e)}
+                  placeholder='Enter a new value here!'
+                  style={styles.styledInput} 
+                  />
+                  <div
+                    onClick={() => setSelectedAttribute()}
+                  >
                     <IoCloseOutline size={20} />
                   </div>
                 </div>
@@ -123,13 +139,17 @@ const styles = {
   },
   attributeRow: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    cursor: 'pointer'
   },
   styledInput: {
     height: '12px'
   },
   drawer: {
-    marginTop: 20
+    marginTop: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 15
   }
 };
 
