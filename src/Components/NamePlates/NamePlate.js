@@ -6,24 +6,19 @@ import { IoCaretDownOutline, IoCaretUpOutline, IoCloseCircle } from 'react-icons
 
 //Open drawer render function
 
-const openDrawer = (birth_year, eye_color, gender, height, mass) =>
-  <>
-    <span>Birth Year: {birth_year}</span>
-    <span>Gender: {gender} </span>
-    <span>Eye Color: {eye_color} </span>
-    <span>Height: {height} cm </span>
-    <span>Mass: {mass} kg </span>
-  </>
-
-const NamePlate = ({ data, deleteOne }) => {
+const NamePlate = ({ data, deleteOne, updateOne }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   const { name, birth_year, eye_color, gender, height, mass } = data;
 
+  // Demo for the innvocation of the updateOne button.
+  // onClick={() => updateOne(name, 'height', 'lol')
+
   return (
 
     <div style={styles.namePlateWrapper}>
+      {/*  Testing line */}
       <div style={styles.namePlateHeader}>
         <span> {name} </span>
         <div
@@ -41,7 +36,13 @@ const NamePlate = ({ data, deleteOne }) => {
           </div>
         </div>
       </div>
-      {isOpen && openDrawer(birth_year, eye_color, gender, height, mass)}
+      {isOpen && <>
+        <span>Birth Year: {birth_year}</span>
+        <span>Gender: {gender} </span>
+        <span>Eye Color: {eye_color} </span>
+        <span>Height: {height} cm </span>
+        <span>Mass: {mass} kg </span>
+      </>}
     </div>
   )
 };

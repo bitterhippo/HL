@@ -4,13 +4,14 @@ import React from 'react';
 
 import NamePlate from './NamePlate';
 
-const NamePlateList = ({ arrayData , deleteOne }) => {
+const NamePlateList = ({ arrayData , deleteOne, updateOne }) => {
 
   return (
     <div style={styles.namePlateListWrappper}>
       {
         arrayData.map(currentItem => <NamePlate 
           deleteOne = {deleteOne}
+          updateOne = {updateOne}
           data={currentItem} 
           key={currentItem.name}
           />)

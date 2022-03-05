@@ -16,6 +16,15 @@ const FindCharacters = () => {
     setSearchedCharacters(previousState => [...previousState.filter(cv => cv.name !== target)])
   }
 
+  const updateOne = (target, field, newValue) => {
+    setSearchedCharacters(previousState => {
+      let targetCharacter = previousState.filter(cv => cv.name === target)
+      let unchangedState = previousState.filter(cv => cv.name !== target)
+      targetCharacter[0][field] = newValue
+      return [...targetCharacter, ...unchangedState]
+    })
+  }
+
   return (
     <MainContent>
       <h1>Looking for a character?</h1>
@@ -38,6 +47,7 @@ const FindCharacters = () => {
         {searchedCharacters.length > 0 && <h3>The Star Wars API returned results with the follow characters. Expand their profiles to check their biographic data!</h3>}
         {searchedCharacters && <NamePlateList 
         deleteOne={deleteOne}
+        updateOne={updateOne}
         arrayData={searchedCharacters} 
         />}
       </div>
