@@ -15,10 +15,8 @@ const API = {
         .then(response => response.text())
         .then(result => JSON.parse(result))
         .then(result => state(previousState => [...previousState, result]))
+        .then(result => loadingHandler(false))
         .catch(err => console.log('Error', err))
-
-
-      loadingHandler(false);
 
     }
   },
@@ -45,9 +43,9 @@ const API = {
         .then(response => response.text())
         .then(result => JSON.parse(result))
         .then(result => state(previousState => [...previousState, result]))
+        .then(result => loadingHandler(false))
         .catch(err => console.log('Error', err)))
 
-      loadingHandler(false);
     }
 
   },
