@@ -22,10 +22,11 @@ const NamePlateList = ({ arrayData , deleteOne, updateOne }) => {
 
 const styles = {
   namePlateListWrappper: {
+    margin: '40px auto 0px auto',
     display: 'flex',
     flexDirection: 'column',
     gap: 20,
-    width: '50%'
+    maxWidth: 400
   }
 };
 
