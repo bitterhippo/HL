@@ -37,11 +37,11 @@ const FindCharacters = () => {
       <div style={styles.mainContentButtonList}>
         <StyledButton
           title="Get One"
-          clickHandler={() => API.getOne(setSearchedCharacters, setIsLoading)}
+          clickHandler={() => API.getOne(setSearchedCharacters, setIsLoading, isLoading)}
         />
         <StyledButton
           title="Get Ten"
-          clickHandler={() => API.getTen(setSearchedCharacters, setIsLoading)}
+          clickHandler={() => API.getTen(setSearchedCharacters, setIsLoading, isLoading)}
         />
       </div>
       <h1>Character List</h1>

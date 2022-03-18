@@ -1,7 +1,7 @@
 const API = {
-  getOne: function (state, loadingHandler) {
+  getOne: function (state, loadingHandler, loading) {
 
-    if (loadingHandler) {
+    if (!loading) {
 
       loadingHandler(true);
       state([])
@@ -22,9 +22,9 @@ const API = {
 
     }
   },
-  getTen: function (state, loadingHandler) {
+  getTen: function (state, loadingHandler, loading) {
 
-    if (loadingHandler) {
+    if (!loading) {
       
       loadingHandler(true);
       state([])
