@@ -24,7 +24,8 @@ const styles = {
   namePlateListWrappper: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 20
+    gap: 20,
+    width: '50%'
   }
 };
 

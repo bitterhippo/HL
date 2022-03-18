@@ -9,6 +9,9 @@ import NamePlateList from '../Components/NamePlates/NamePlateList';
 const FindCharacters = () => {
 
   const [searchedCharacters, setSearchedCharacters] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log(isLoading);
 
   //Utilities
 
@@ -34,17 +37,18 @@ const FindCharacters = () => {
       <div style={styles.mainContentButtonList}>
         <StyledButton
           title="Get One"
-          clickHandler={() => API.getOne(setSearchedCharacters)}
+          clickHandler={() => API.getOne(setSearchedCharacters, setIsLoading)}
         />
         <StyledButton
           title="Get Ten"
-          clickHandler={() => API.getTen(setSearchedCharacters)}
+          clickHandler={() => API.getTen(setSearchedCharacters, setIsLoading)}
         />
       </div>
       <h1>Character List</h1>
       <div style={styles.charactersList}>
         {searchedCharacters.length < 1 && <h3>Press the "Get One" or "Get Ten" buttons above to access the biographic data of random characters from the Star Wars universe.</h3>}
         {searchedCharacters.length > 0 && <h3>The Star Wars API returned results with the follow characters. Expand their profiles to check their biographic data! If you find any mistakes, click on a characters attributes to edit them.</h3>}
+        {isLoading === true && <h3>Fetching API Data...</h3>}
         {searchedCharacters && <NamePlateList 
         deleteOne={deleteOne}
         updateOne={updateOne}
