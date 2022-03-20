@@ -41,12 +41,18 @@ const API = {
           queryValues.includes(newRN) ? null : queryValues.push(newRN);
         }
 
-        await queryValues.forEach(cv => fetch(`https://swapi.dev/api/people/${cv}/`, requestOptions)
-          .then(response => response.text())
-          .then(response => JSON.parse(response))
-          .then(result => state(previousState => [...previousState, result])))
+        let returnedQueries = [];
 
-          loadingHandler(false)
+        for (let i = 0; i < queryValues.length; i++) {
+          let request = await fetch(`https://swapi.dev/api/people/${queryValues[i]}/`)
+          .then(result => result.text())
+          .then(result => JSON.parse(result))
+          .then(result => returnedQueries.push(result))
+        }
+
+        state([...returnedQueries])
+
+        loadingHandler(false)
 
       } catch (error) {
         console.log(error)
