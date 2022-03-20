@@ -11,8 +11,6 @@ const NamePlate = ({ data, deleteOne, updateOne }) => {
   const [selectedAttribute, setSelectedAttribute] = useState();
   const [textInput, setInput] = useState('');
 
-  console.log(selectedAttribute)
-
   //Utilites
 
   const handleChange = (e) => {

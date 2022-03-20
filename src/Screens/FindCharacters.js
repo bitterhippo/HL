@@ -41,7 +41,7 @@ const FindCharacters = () => {
         />
         <StyledButton
           title="Get Ten"
-          clickHandler={() => API.getTen(setSearchedCharacters, setIsLoading, isLoading)}
+          clickHandler={!isLoading ? () => API.getTen(setSearchedCharacters, setIsLoading, isLoading) : null}
         />
       </div>
       <h1>Character List</h1>
