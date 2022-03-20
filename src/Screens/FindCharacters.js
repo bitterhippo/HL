@@ -11,8 +11,6 @@ const FindCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(isLoading);
-
   //Utilities
 
   const deleteOne = target => {
@@ -37,11 +35,13 @@ const FindCharacters = () => {
       <div style={styles.mainContentButtonList}>
         <StyledButton
           title="Get One"
+          buttonEnabled={isLoading}
           clickHandler={() => API.getOne(setSearchedCharacters, setIsLoading, isLoading)}
         />
         <StyledButton
           title="Get Ten"
-          clickHandler={!isLoading ? () => API.getTen(setSearchedCharacters, setIsLoading, isLoading) : null}
+          buttonEnabled={isLoading}
+          clickHandler={() => API.getTen(setSearchedCharacters, setIsLoading, isLoading)}
         />
       </div>
       <h1>Character List</h1>

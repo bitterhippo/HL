@@ -3,9 +3,10 @@ import React from 'react';
 //Subcomponents
 import Colors from '../Colors';
 
-const StyledButton = ({ title, clickHandler }) => {
+const StyledButton = ({ title, clickHandler, buttonEnabled }) => {
   return (
     <button 
+    disable={!buttonEnabled ? 'disable' : 'enable'}
     style={styles.buttonWrapper}
     onClick={() => clickHandler()}
     >
